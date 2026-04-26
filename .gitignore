@@ -1,0 +1,22 @@
+.env
+.venv/
+env/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+node_modules/
+dist/
+
+# Legacy/local market datasets kept for recovery work.
+# Public datasets must be curated later under data/sample/ or data/processed/.
+core/data/*.csv
+core/NSE_Light/data/*.csv
+data/raw/
+data/local/
+data/processed/*.csv
+data/processed/*.metadata.json
+data/sample/*.csv
+
+# Model artifacts are intentionally reviewed case by case.
+# Legacy .pt files may be kept with documentation.

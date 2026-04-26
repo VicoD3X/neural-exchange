@@ -1,0 +1,9 @@
+revision,date,prediction,actual,error_percent,panic_mode,trend_note
+Rev2,2005-03-27,10556.33,10498.59,0.55,,Tres precis
+Rev2,2006-07-02,11003.11,11090.67,-0.79,,Tres precis
+Rev2,2007-07-01,13455.7,13611.68,-1.14,,NSE capte bien le pic du marche
+Rev2,2007-10-07,13513.15,14164.53,-4.6,,NSE sous-estime le pic mais capte la tendance
+Rev2,2008-09-14,11230.41,10917.51,2.87,,NSE capte la chute juste avant Lehman Brothers
+Rev2,2009-03-01,8040.91,6469.95,24.3,,NSE voit la chute mais la sous-estime
+Rev2,2009-09-06,9429.57,9504.72,-0.79,,NSE capte bien le rebond
+Rev2,2010-01-03,10296.09,10583.96,-2.72,,NSE suit bien la reprise

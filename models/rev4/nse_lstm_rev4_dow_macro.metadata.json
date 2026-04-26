@@ -1,0 +1,44 @@
+{
+  "model_name": "nse-lstm-rev4-dow-macro",
+  "dataset_name": "dow_macro_rev4_features",
+  "dataset_path": "data/processed/dow_macro_rev4_features.csv",
+  "generated_at": "2026-04-26T06:27:29.048815+00:00",
+  "feature_columns": [
+    "Market_Close",
+    "FEDFUNDS",
+    "CPIAUCSL",
+    "MORTGAGE30US",
+    "UMCSENT",
+    "T10Y2Y",
+    "UNRATE",
+    "HOUST",
+    "TOTALSA",
+    "Volatility_1W",
+    "Volatility_1M",
+    "Panic_Mode"
+  ],
+  "target_column": "Market_Close",
+  "sequence_length": 21,
+  "train_ratio": 0.8,
+  "train_rows": 1594,
+  "test_rows": 399,
+  "input_size": 12,
+  "hidden_size": 64,
+  "epochs": 60,
+  "batch_size": 32,
+  "learning_rate": 0.001,
+  "random_seed": 42,
+  "metrics": {
+    "mae": 209.86209106445312,
+    "rmse": 238.40696716308594,
+    "mape_percent": 2.0411033630371094,
+    "directional_accuracy_percent": 53.517587939698494
+  },
+  "artifacts": {
+    "model_path": "models/rev4/nse_lstm_rev4_dow_macro.pt",
+    "scaler_path": "models/rev4/nse_lstm_rev4_dow_macro_scaler.joblib",
+    "metadata_path": "models/rev4/nse_lstm_rev4_dow_macro.metadata.json"
+  },
+  "final_train_loss": 0.0003688486009195913,
+  "financial_disclaimer": "Donnees et modeles experimentaux. Aucun resultat ne constitue un conseil financier."
+}

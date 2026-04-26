@@ -1,0 +1,170 @@
+{
+  "summary": {
+    "model_name": "nse-lstm-rev4-dow-macro",
+    "dataset_name": "dow_macro_rev4_features",
+    "target_column": "Market_Close",
+    "train_rows": 1594,
+    "test_rows": 399,
+    "final_train_loss": 0.0003688486009195913
+  },
+  "metrics": {
+    "mae": 209.86209106445312,
+    "rmse": 238.40696716308594,
+    "mape_percent": 2.0411033630371094,
+    "directional_accuracy_percent": 53.517587939698494
+  },
+  "features": [
+    "Market_Close",
+    "FEDFUNDS",
+    "CPIAUCSL",
+    "MORTGAGE30US",
+    "UMCSENT",
+    "T10Y2Y",
+    "UNRATE",
+    "HOUST",
+    "TOTALSA",
+    "Volatility_1W",
+    "Volatility_1M",
+    "Panic_Mode"
+  ],
+  "training": {
+    "sequence_length": 21,
+    "hidden_size": 64,
+    "epochs": 60,
+    "batch_size": 32,
+    "learning_rate": 0.001,
+    "random_seed": 42,
+    "loss_first": 0.0640235510468483,
+    "loss_last": 0.0003688486009195913
+  },
+  "prediction_preview": [
+    {
+      "date": "2009-06-03",
+      "actual": 8675.240234375,
+      "prediction": 8423.576171875,
+      "error": -251.6640625
+    },
+    {
+      "date": "2009-06-04",
+      "actual": 8750.240234375,
+      "prediction": 8464.0673828125,
+      "error": -286.1728515625
+    },
+    {
+      "date": "2009-06-05",
+      "actual": 8763.1298828125,
+      "prediction": 8540.658203125,
+      "error": -222.4716796875
+    },
+    {
+      "date": "2009-06-08",
+      "actual": 8764.490234375,
+      "prediction": 8586.466796875,
+      "error": -178.0234375
+    },
+    {
+      "date": "2009-06-09",
+      "actual": 8763.0595703125,
+      "prediction": 8608.2412109375,
+      "error": -154.818359375
+    },
+    {
+      "date": "2009-06-10",
+      "actual": 8739.01953125,
+      "prediction": 8628.642578125,
+      "error": -110.376953125
+    },
+    {
+      "date": "2009-06-11",
+      "actual": 8770.919921875,
+      "prediction": 8641.6591796875,
+      "error": -129.2607421875
+    },
+    {
+      "date": "2009-06-12",
+      "actual": 8799.259765625,
+      "prediction": 8683.26953125,
+      "error": -115.990234375
+    },
+    {
+      "date": "2009-06-15",
+      "actual": 8612.1298828125,
+      "prediction": 8715.2626953125,
+      "error": 103.1328125
+    },
+    {
+      "date": "2009-06-16",
+      "actual": 8504.669921875,
+      "prediction": 8703.763671875,
+      "error": 199.09375
+    }
+  ],
+  "prediction_tail": [
+    {
+      "date": "2010-12-16",
+      "actual": 11499.25,
+      "prediction": 11314.7353515625,
+      "error": -184.5146484375
+    },
+    {
+      "date": "2010-12-17",
+      "actual": 11491.91015625,
+      "prediction": 11354.0166015625,
+      "error": -137.8935546875
+    },
+    {
+      "date": "2010-12-20",
+      "actual": 11478.1298828125,
+      "prediction": 11374.6328125,
+      "error": -103.4970703125
+    },
+    {
+      "date": "2010-12-21",
+      "actual": 11533.16015625,
+      "prediction": 11376.16015625,
+      "error": -157.0
+    },
+    {
+      "date": "2010-12-22",
+      "actual": 11559.490234375,
+      "prediction": 11382.6240234375,
+      "error": -176.8662109375
+    },
+    {
+      "date": "2010-12-23",
+      "actual": 11573.490234375,
+      "prediction": 11392.8798828125,
+      "error": -180.6103515625
+    },
+    {
+      "date": "2010-12-27",
+      "actual": 11555.0302734375,
+      "prediction": 11400.9990234375,
+      "error": -154.03125
+    },
+    {
+      "date": "2010-12-28",
+      "actual": 11575.5400390625,
+      "prediction": 11403.822265625,
+      "error": -171.7177734375
+    },
+    {
+      "date": "2010-12-29",
+      "actual": 11585.3798828125,
+      "prediction": 11409.900390625,
+      "error": -175.4794921875
+    },
+    {
+      "date": "2010-12-30",
+      "actual": 11569.7099609375,
+      "prediction": 11417.5244140625,
+      "error": -152.185546875
+    }
+  ],
+  "limitations": [
+    "Modele experimental local, non destine au trading.",
+    "Evaluation retrospective uniquement sur la periode disponible.",
+    "Aucune promesse de prediction fiable des marches ou des crises."
+  ],
+  "financial_disclaimer": "Donnees et modeles experimentaux. Aucun resultat ne constitue un conseil financier."
+}

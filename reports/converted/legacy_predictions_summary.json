@@ -1,0 +1,272 @@
+{
+  "summary": {
+    "project": "Neural Stock Exchange",
+    "report_type": "legacy_predictions",
+    "source": "Excel historiques convertis sans modification des resultats",
+    "rows": 22,
+    "date_min": "2005-03-27",
+    "date_max": "2010-01-03",
+    "panic_mode_rows": 4
+  },
+  "converted_reports": [
+    {
+      "revision": "Rev2",
+      "source_path": "reports/legacy/Stats NSE Rev2.xlsx",
+      "csv_path": "reports/converted/legacy_rev2_predictions.csv",
+      "rows": 8,
+      "has_panic_mode": false
+    },
+    {
+      "revision": "Rev2.5",
+      "source_path": "reports/legacy/Stats NSE Rev2.5.xlsx",
+      "csv_path": "reports/converted/legacy_rev25_predictions.csv",
+      "rows": 14,
+      "has_panic_mode": true
+    }
+  ],
+  "observations": [
+    {
+      "revision": "Rev2",
+      "date": "2005-03-27",
+      "prediction": 10556.33,
+      "actual": 10498.59,
+      "error_percent": 0.55,
+      "panic_mode": null,
+      "trend_note": "Tres precis"
+    },
+    {
+      "revision": "Rev2",
+      "date": "2006-07-02",
+      "prediction": 11003.11,
+      "actual": 11090.67,
+      "error_percent": -0.79,
+      "panic_mode": null,
+      "trend_note": "Tres precis"
+    },
+    {
+      "revision": "Rev2",
+      "date": "2007-07-01",
+      "prediction": 13455.7,
+      "actual": 13611.68,
+      "error_percent": -1.14,
+      "panic_mode": null,
+      "trend_note": "NSE capte bien le pic du marche"
+    },
+    {
+      "revision": "Rev2",
+      "date": "2007-10-07",
+      "prediction": 13513.15,
+      "actual": 14164.53,
+      "error_percent": -4.6,
+      "panic_mode": null,
+      "trend_note": "NSE sous-estime le pic mais capte la tendance"
+    },
+    {
+      "revision": "Rev2",
+      "date": "2008-09-14",
+      "prediction": 11230.41,
+      "actual": 10917.51,
+      "error_percent": 2.87,
+      "panic_mode": null,
+      "trend_note": "NSE capte la chute juste avant Lehman Brothers"
+    },
+    {
+      "revision": "Rev2",
+      "date": "2009-03-01",
+      "prediction": 8040.91,
+      "actual": 6469.95,
+      "error_percent": 24.3,
+      "panic_mode": null,
+      "trend_note": "NSE voit la chute mais la sous-estime"
+    },
+    {
+      "revision": "Rev2",
+      "date": "2009-09-06",
+      "prediction": 9429.57,
+      "actual": 9504.72,
+      "error_percent": -0.79,
+      "panic_mode": null,
+      "trend_note": "NSE capte bien le rebond"
+    },
+    {
+      "revision": "Rev2",
+      "date": "2010-01-03",
+      "prediction": 10296.09,
+      "actual": 10583.96,
+      "error_percent": -2.72,
+      "panic_mode": null,
+      "trend_note": "NSE suit bien la reprise"
+    },
+    {
+      "revision": "Rev2.5",
+      "date": "2005-03-27",
+      "prediction": 10729.29,
+      "actual": 10442.87,
+      "error_percent": 2.74,
+      "panic_mode": false,
+      "trend_note": "Precision correcte"
+    },
+    {
+      "revision": "Rev2.5",
+      "date": "2006-06-25",
+      "prediction": 11264.53,
+      "actual": 11009.09,
+      "error_percent": 2.32,
+      "panic_mode": false,
+      "trend_note": "NSE capte la stabilite du marche"
+    },
+    {
+      "revision": "Rev2.5",
+      "date": "2006-07-02",
+      "prediction": 11247.42,
+      "actual": 11150.22,
+      "error_percent": 0.87,
+      "panic_mode": false,
+      "trend_note": "Tres precis"
+    },
+    {
+      "revision": "Rev2.5",
+      "date": "2007-02-25",
+      "prediction": 12867.48,
+      "actual": 12610.41,
+      "error_percent": 2.04,
+      "panic_mode": false,
+      "trend_note": "NSE suit la tendance mais surestime legerement"
+    },
+    {
+      "revision": "Rev2.5",
+      "date": "2007-07-01",
+      "prediction": 13652.26,
+      "actual": 13408.62,
+      "error_percent": 1.82,
+      "panic_mode": false,
+      "trend_note": "NSE suit la tendance"
+    },
+    {
+      "revision": "Rev2.5",
+      "date": "2007-10-07",
+      "prediction": 13722.97,
+      "actual": 14066.01,
+      "error_percent": -2.44,
+      "panic_mode": false,
+      "trend_note": "Sous-estime legerement le sommet"
+    },
+    {
+      "revision": "Rev2.5",
+      "date": "2008-01-20",
+      "prediction": 13056.94,
+      "actual": 12099.3,
+      "error_percent": 7.92,
+      "panic_mode": true,
+      "trend_note": "NSE declenche Panic Mode des janvier 2008"
+    },
+    {
+      "revision": "Rev2.5",
+      "date": "2008-03-16",
+      "prediction": 12211.99,
+      "actual": 11951.09,
+      "error_percent": 2.18,
+      "panic_mode": false,
+      "trend_note": "NSE suit le marche mais ne detecte pas encore l'instabilite"
+    },
+    {
+      "revision": "Rev2.5",
+      "date": "2008-09-14",
+      "prediction": 11493.11,
+      "actual": 11388.44,
+      "error_percent": 0.92,
+      "panic_mode": false,
+      "trend_note": "NSE voit la baisse mais ne declenche pas Panic Mode"
+    },
+    {
+      "revision": "Rev2.5",
+      "date": "2008-10-12",
+      "prediction": 10443.32,
+      "actual": 8451.19,
+      "error_percent": 23.54,
+      "panic_mode": true,
+      "trend_note": "NSE detecte la crise mais sous-estime sa violence"
+    },
+    {
+      "revision": "Rev2.5",
+      "date": "2009-03-01",
+      "prediction": 7868.21,
+      "actual": 6626.93,
+      "error_percent": 18.74,
+      "panic_mode": true,
+      "trend_note": "NSE voit la panique mais manque d'agressivite"
+    },
+    {
+      "revision": "Rev2.5",
+      "date": "2009-04-05",
+      "prediction": 7623.1,
+      "actual": 7012.93,
+      "error_percent": 8.7,
+      "panic_mode": true,
+      "trend_note": "NSE suit la tendance baissiere et anticipe le stress economique"
+    },
+    {
+      "revision": "Rev2.5",
+      "date": "2009-09-06",
+      "prediction": 9619.72,
+      "actual": 9441.27,
+      "error_percent": 1.89,
+      "panic_mode": false,
+      "trend_note": "NSE capte bien la reprise post-crise"
+    },
+    {
+      "revision": "Rev2.5",
+      "date": "2009-12-27",
+      "prediction": 10402.35,
+      "actual": 10428.05,
+      "error_percent": -0.25,
+      "panic_mode": false,
+      "trend_note": "NSE suit bien la tendance"
+    }
+  ],
+  "panic_mode_observations": [
+    {
+      "revision": "Rev2.5",
+      "date": "2008-01-20",
+      "prediction": 13056.94,
+      "actual": 12099.3,
+      "error_percent": 7.92,
+      "panic_mode": true,
+      "trend_note": "NSE declenche Panic Mode des janvier 2008"
+    },
+    {
+      "revision": "Rev2.5",
+      "date": "2008-10-12",
+      "prediction": 10443.32,
+      "actual": 8451.19,
+      "error_percent": 23.54,
+      "panic_mode": true,
+      "trend_note": "NSE detecte la crise mais sous-estime sa violence"
+    },
+    {
+      "revision": "Rev2.5",
+      "date": "2009-03-01",
+      "prediction": 7868.21,
+      "actual": 6626.93,
+      "error_percent": 18.74,
+      "panic_mode": true,
+      "trend_note": "NSE voit la panique mais manque d'agressivite"
+    },
+    {
+      "revision": "Rev2.5",
+      "date": "2009-04-05",
+      "prediction": 7623.1,
+      "actual": 7012.93,
+      "error_percent": 8.7,
+      "panic_mode": true,
+      "trend_note": "NSE suit la tendance baissiere et anticipe le stress economique"
+    }
+  ],
+  "limitations": [
+    "Rapports historiques issus des prototypes Rev2 et Rev2.5.",
+    "Les valeurs sont converties pour lecture, sans recalcul de performance.",
+    "Les fichiers Rev2 d'origine et scalers associes ne sont pas disponibles.",
+    "Ces resultats ne constituent pas une preuve de robustesse predictive."
+  ],
+  "financial_disclaimer": "Donnees et modeles experimentaux. Aucun resultat ne constitue un conseil financier."
+}

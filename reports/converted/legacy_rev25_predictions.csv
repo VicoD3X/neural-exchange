@@ -1,0 +1,15 @@
+revision,date,prediction,actual,error_percent,panic_mode,trend_note
+Rev2.5,2005-03-27,10729.29,10442.87,2.74,False,Precision correcte
+Rev2.5,2006-06-25,11264.53,11009.09,2.32,False,NSE capte la stabilite du marche
+Rev2.5,2006-07-02,11247.42,11150.22,0.87,False,Tres precis
+Rev2.5,2007-02-25,12867.48,12610.41,2.04,False,NSE suit la tendance mais surestime legerement
+Rev2.5,2007-07-01,13652.26,13408.62,1.82,False,NSE suit la tendance
+Rev2.5,2007-10-07,13722.97,14066.01,-2.44,False,Sous-estime legerement le sommet
+Rev2.5,2008-01-20,13056.94,12099.3,7.92,True,NSE declenche Panic Mode des janvier 2008
+Rev2.5,2008-03-16,12211.99,11951.09,2.18,False,NSE suit le marche mais ne detecte pas encore l'instabilite
+Rev2.5,2008-09-14,11493.11,11388.44,0.92,False,NSE voit la baisse mais ne declenche pas Panic Mode
+Rev2.5,2008-10-12,10443.32,8451.19,23.54,True,NSE detecte la crise mais sous-estime sa violence
+Rev2.5,2009-03-01,7868.21,6626.93,18.74,True,NSE voit la panique mais manque d'agressivite
+Rev2.5,2009-04-05,7623.1,7012.93,8.7,True,NSE suit la tendance baissiere et anticipe le stress economique
+Rev2.5,2009-09-06,9619.72,9441.27,1.89,False,NSE capte bien la reprise post-crise
+Rev2.5,2009-12-27,10402.35,10428.05,-0.25,False,NSE suit bien la tendance
