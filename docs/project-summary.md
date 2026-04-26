@@ -2,6 +2,8 @@
 
 Neural Stock Exchange est un projet experimental de series temporelles financieres.
 
+Il doit etre lu comme un laboratoire etudiant avance : un ancien prototype personnel, conserve avec ses revisions legacy, puis reconstruit autour d'un flux Rev4 plus propre et mesurable.
+
 L'objectif est d'explorer comment combiner :
 
 - donnees de marche ;
@@ -25,6 +27,8 @@ Il montre une demarche technique :
 - comparaison du LSTM avec des baselines simples ;
 - conversion de rapports historiques ;
 - tests offline.
+
+La comparaison critique est centrale : le projet documente explicitement quand le LSTM ne bat pas une baseline naive, afin de montrer une demarche d'evaluation mature.
 
 ## Revisions
 

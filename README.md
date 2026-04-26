@@ -13,7 +13,24 @@ Neural Stock Exchange est un laboratoire experimental autour des series temporel
 
 Le projet explore la combinaison de donnees de marche, de variables macroeconomiques, de features de volatilite et de modeles LSTM PyTorch pour analyser des signaux de stress sur la periode 2003-2010.
 
-Ce depot ne presente pas un produit financier, un bot de trading ou une promesse de prediction fiable. Il documente une remise en etat progressive d'un prototype personnel vers un moteur local plus propre, testable et reproductible.
+Ce depot ne presente pas un produit financier, un bot de trading ou une promesse de prediction fiable. Il documente la remise en etat d'un ancien prototype personnel, construit dans une logique d'apprentissage avance, vers un laboratoire local plus propre, testable et reproductible.
+
+Le projet doit se lire comme un projet experimental etudiant pousse : beaucoup d'iterations, des traces legacy conservees, un moteur Rev4 reconstruit proprement, et surtout une evaluation critique qui accepte de montrer quand le LSTM ne bat pas une baseline naive.
+
+## Pourquoi ce projet existe
+
+Neural Stock Exchange est parti d'une intuition simple : utiliser des donnees de marche, des signaux macroeconomiques et un LSTM pour explorer si certains regimes de stress financier pouvaient etre detectes dans les annees precedant la crise de 2008.
+
+La version actuelle ne cherche pas a prouver qu'un modele predit les crises. Elle montre plutot un chemin d'ingenierie et d'apprentissage :
+
+- recuperer un prototype fragmente ;
+- separer le legacy du flux actif ;
+- reconstruire des donnees propres ;
+- entrainer un LSTM reproductible ;
+- comparer le modele a des baselines simples ;
+- documenter franchement les limites.
+
+L'interet principal du projet est donc la demarche : experimentation, rigueur progressive, evaluation critique et transparence.
 
 ## Avertissement
 
@@ -31,9 +48,36 @@ Le projet vise a montrer :
 - la preparation de sequences LSTM ;
 - l'entrainement d'un baseline Rev4 reproductible ;
 - la conservation documentee de modeles legacy ;
-- la conversion de rapports historiques en Markdown, CSV et JSON.
+- la conversion de rapports historiques en Markdown, CSV et JSON ;
+- l'evaluation critique d'un LSTM face a des baselines simples.
 
 ## Architecture
+
+Vue logique du projet :
+
+```mermaid
+flowchart LR
+    A["Sources externes<br/>yfinance + FRED"] --> B["Generation datasets<br/>scripts/build_*"]
+    B --> C["data/processed<br/>CSV locaux ignores par Git"]
+    C --> D["nse-engine<br/>nettoyage + features + sequences"]
+    D --> E["LSTM Rev4<br/>PyTorch"]
+    E --> F["Evaluation critique<br/>LSTM vs baselines"]
+    F --> G["reports/rev4<br/>Markdown + JSON + PNG"]
+
+    H["Rev2 / Rev2.5 / Rev3"] --> I["legacy/<br/>archive technique"]
+    I --> J["reports/converted<br/>rapports historiques convertis"]
+    J --> G
+```
+
+Lecture rapide :
+
+- `src/nse_engine/` contient le moteur actif et testable.
+- `legacy/` conserve l'histoire technique du projet, sans etre le flux principal.
+- `data/processed/` contient les datasets reconstruits localement et ignores par Git.
+- `models/rev4/` contient le modele Rev4, son scaler et sa metadata.
+- `reports/rev4/` contient les sorties lisibles de l'experimentation.
+
+Structure du depot :
 
 ```text
 .
@@ -67,6 +111,8 @@ Le projet distingue clairement plusieurs etapes.
 | Rev3 | Legacy-advanced | Prototype avance, utile comme inspiration, non utilise comme pipeline actif |
 | Rev4 | Reproductible | Flux reconstruit avec dataset propre, LSTM, scaler, metadata et rapport |
 
+Cette histoire fait partie du projet. Rev2, Rev2.5 et Rev3 ne sont pas caches : ils expliquent l'evolution d'un prototype etudiant experimental vers une base plus saine.
+
 ## nse-engine et nse-engine-gold
 
 `nse-engine` est le moteur Python propre du projet. Il contient le nettoyage, les features, la preparation de sequences, les modeles LSTM, le reporting et les conversions legacy.
@@ -95,7 +141,7 @@ python -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r requirements.txt -r requirements-dev.txt
 ```
 
-Dépendances legacy optionnelles :
+Dependances legacy optionnelles :
 
 ```bash
 .\.venv\Scripts\python.exe -m pip install -r requirements-legacy.txt
@@ -139,11 +185,23 @@ pip check
 
 Le depot contient deux familles de resultats lisibles :
 
-- `reports/converted/legacy_predictions_summary.md` : conversion des rapports Rev2 et Rev2.5.
-- `reports/rev4/rev4_training_report.md` : premier rapport du baseline LSTM Rev4.
+- `reports/converted/legacy_predictions_summary.md` : conversion des rapports Rev2 et Rev2.5 ;
+- `reports/rev4/rev4_training_report.md` : rapport du baseline LSTM Rev4 ;
 - `reports/rev4/rev4_baseline_comparison.md` : comparaison critique LSTM vs baselines.
 
 Les performances Rev4 sont retrospectives et exploratoires. Elles servent a valider que le flux fonctionne, pas a prouver une capacite de prediction exploitable.
+
+## Artefacts principaux
+
+| Artefact | Role |
+|---|---|
+| `models/rev4/nse_lstm_rev4_dow_macro.pt` | Poids du modele Rev4 actuel |
+| `models/rev4/nse_lstm_rev4_dow_macro.scaler.joblib` | Scaler sauvegarde pour reproduire l'inference Rev4 |
+| `models/rev4/nse_lstm_rev4_dow_macro.metadata.json` | Metadata du run, features, metriques et verdict critique |
+| `reports/rev4/rev4_training_report.md` | Rapport principal d'entrainement Rev4 |
+| `reports/rev4/rev4_baseline_comparison.md` | Comparaison LSTM vs baselines |
+| `reports/rev4/rev4_actual_vs_predictions.png` | Courbe reel vs LSTM vs baselines |
+| `reports/rev4/rev4_residuals.png` | Residus des predictions |
 
 ## Evaluation critique
 
@@ -170,6 +228,8 @@ Les graphiques disponibles dans `reports/rev4/` montrent :
 
 - reel vs LSTM vs baselines ;
 - residus du LSTM et des baselines.
+
+Cette conclusion est volontairement mise en avant : le projet gagne en credibilite parce qu'il documente une absence de superiorite claire du LSTM sur une baseline simple, au lieu de presenter une courbe isolee comme une preuve.
 
 ## Tests
 
