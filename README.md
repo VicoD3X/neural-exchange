@@ -7,7 +7,7 @@
 ![Data](https://img.shields.io/badge/Data-FRED_+_yfinance-0f766e)
 ![No Advice](https://img.shields.io/badge/No_financial_advice-required-red)
 
-## En 20 secondes
+## En brief
 
 Neural Stock Exchange est un laboratoire experimental de series temporelles financieres.
 
