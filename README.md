@@ -221,6 +221,13 @@ npm install
 npm run dev
 ```
 
+Construire la vitrine statique :
+
+```bash
+cd dashboard
+npm run build
+```
+
 Lancer les tests :
 
 ```bash
@@ -336,6 +343,8 @@ Deux interfaces lisent les memes exports Rev4, sans relancer le modele :
 - Streamlit local : cockpit d'analyse pour parcourir les KPI, les baselines, les regimes et les limites.
 - React/Vite statique : vitrine publique compatible GitHub Pages, centree sur les graphes et le verdict critique.
 
+Dashboard public : [vicod3x.github.io/neural-exchange](https://vicod3x.github.io/neural-exchange/)
+
 Le fichier pivot est `reports/rev4/dashboard_data.json`. Il est genere depuis les rapports existants avec :
 
 ```bash
@@ -372,7 +381,7 @@ Ils couvrent notamment :
 - Aucune garantie de performance predictive.
 - Pas de validation walk-forward avancee.
 - Pas de conseil financier.
-- Pas de dashboard actif.
+- Les dashboards sont des lecteurs de rapports, pas des moteurs d'inference.
 - Pas de validation separee solide sur les regimes de stress.
 - Backend Flask historique archive, non maintenu.
 - Rev2 et Rev2.5 sont documentes mais non reproductibles completement.
@@ -389,6 +398,8 @@ Voir aussi :
 - `docs/model-inventory.md`
 - `docs/reporting.md`
 - `docs/post-github-audit.md`
+- `docs/dashboard.md`
+- `docs/project-freeze-note.md`
 - `docs/limitations.md`
 - `docs/technical-debt.md`
 - `ROADMAP.md`
