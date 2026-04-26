@@ -7,6 +7,8 @@ __pycache__/
 .ruff_cache/
 node_modules/
 dist/
+dashboard/node_modules/
+dashboard/dist/
 
 # Legacy/local market datasets kept for recovery work.
 # Public datasets must be curated later under data/sample/ or data/processed/.

@@ -38,10 +38,10 @@ Objectif : recentrer une partie du projet sur la detection de regime plutot que 
 Objectif : prolonger les rapports visuels deja presents sans ajouter une architecture lourde.
 
 - Maintenir les graphiques statiques Rev4 generes dans `reports/rev4/`.
-- Ajouter un export JSON plus unifie si un dashboard devient prioritaire.
-- Evaluer plus tard une interface Streamlit locale centree analyse.
-- Evaluer separement un dashboard statique GitHub Pages.
-- Ne pas lancer de dashboard tant que l'evaluation scientifique n'est pas consolidee.
+- Maintenir `reports/rev4/dashboard_data.json` comme contrat public des dashboards.
+- Utiliser Streamlit comme cockpit local d'analyse.
+- Utiliser React/Vite comme vitrine statique GitHub Pages.
+- Garder les dashboards comme lecteurs de rapports, pas comme moteurs d'inference.
 
 ## Priorite 5 - Nettoyage legacy progressif
 

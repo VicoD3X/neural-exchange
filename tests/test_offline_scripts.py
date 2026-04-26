@@ -7,6 +7,8 @@ from pathlib import Path
 SCRIPTS_WITHOUT_DIRECT_NETWORK_CLIENTS = {
     "check_legacy_models.py",
     "convert_legacy_reports.py",
+    "export_dashboard_data.py",
+    "sync_dashboard_assets.py",
     "train_rev4_model.py",
     "run_rev4_pipeline.py",
 }

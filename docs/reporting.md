@@ -58,10 +58,26 @@ Exports :
 - `reports/rev4/rev4_error_distribution.png` ;
 - `reports/rev4/rev4_direction_accuracy.png` ;
 - `reports/rev4/rev4_market_context_panic_mode.png`.
+- `reports/rev4/dashboard_data.json`.
 
 Le rapport contient les metriques retrospectives, les features, les hyperparametres,
 un apercu de predictions, une comparaison contre deux baselines simples et des graphiques
 scientifiques clairs pour lire le contexte, les erreurs, les residus et la direction.
+
+## Export dashboard
+
+Le dashboard Streamlit et le dashboard React statique lisent un export dedie :
+
+```bash
+python scripts/export_dashboard_data.py
+python scripts/sync_dashboard_assets.py
+```
+
+`dashboard_data.json` regroupe les metriques, le verdict critique, les chemins des graphes,
+les artefacts, les limites, le legacy et une lecture par regime quand les donnees locales
+sont disponibles.
+
+Cet export ne relance pas l'entrainement et ne declenche aucun appel reseau.
 
 ## Interpretation
 

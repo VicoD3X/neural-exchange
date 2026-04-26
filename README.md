@@ -97,6 +97,8 @@ Structure du depot :
 ```text
 .
 |-- data/                 # Donnees locales regenerables, non versionnees par defaut
+|-- app/                  # Dashboard Streamlit local
+|-- dashboard/            # Dashboard React statique pour GitHub Pages
 |-- docs/                 # Documentation publique du projet
 |-- legacy/               # Scripts historiques conserves comme archive technique
 |-- models/
@@ -196,6 +198,28 @@ python scripts/run_rev4_pipeline.py
 
 Cette commande regenere le dataset Dow/Macro Rev4, entraine le modele, sauvegarde le scaler, met a jour la metadata, les rapports et les graphiques.
 Elle necessite un acces reseau et peut utiliser `FRED_API_KEY` si la recuperation FRED par API est active.
+
+Exporter les donnees dashboard :
+
+```bash
+python scripts/export_dashboard_data.py
+python scripts/sync_dashboard_assets.py
+```
+
+Lancer le dashboard Streamlit local :
+
+```bash
+pip install -r requirements-app.txt
+streamlit run app/streamlit_app.py
+```
+
+Lancer le dashboard React local :
+
+```bash
+cd dashboard
+npm install
+npm run dev
+```
 
 Lancer les tests :
 
@@ -305,6 +329,27 @@ Les graphiques ci-dessous sont generes par `python scripts/train_rev4_model.py`.
 
 La lecture visuelle ne remplace pas les metriques. Le verdict actuel reste que la baseline `last_value` bat le LSTM Rev4 sur le MAE, meme si le LSTM conserve un interet experimental pour analyser la preparation des sequences et le signal directionnel.
 
+## Visualisation interactive
+
+Deux interfaces lisent les memes exports Rev4, sans relancer le modele :
+
+- Streamlit local : cockpit d'analyse pour parcourir les KPI, les baselines, les regimes et les limites.
+- React/Vite statique : vitrine publique compatible GitHub Pages, centree sur les graphes et le verdict critique.
+
+Le fichier pivot est `reports/rev4/dashboard_data.json`. Il est genere depuis les rapports existants avec :
+
+```bash
+python scripts/export_dashboard_data.py
+```
+
+Le dashboard GitHub Pages utilise une copie synchronisee dans `dashboard/public/` :
+
+```bash
+python scripts/sync_dashboard_assets.py
+```
+
+Ces dashboards sont volontairement statiques : aucun backend, aucune inference en ligne, aucun appel reseau.
+
 ## Tests
 
 Les tests sont concus pour rester offline.
@@ -343,6 +388,7 @@ Voir aussi :
 - `docs/data-inventory.md`
 - `docs/model-inventory.md`
 - `docs/reporting.md`
+- `docs/post-github-audit.md`
 - `docs/limitations.md`
 - `docs/technical-debt.md`
 - `ROADMAP.md`
