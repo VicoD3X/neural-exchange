@@ -12,17 +12,22 @@ import torch
 
 from nse_engine.config import (
     FINANCIAL_DISCLAIMER,
-    REV4_ACTUAL_VS_PREDICTIONS_PNG_PATH,
     REV4_BASELINE_REPORT_JSON_PATH,
     REV4_BASELINE_REPORT_MD_PATH,
     REV4_BATCH_SIZE,
+    REV4_DIRECTION_ACCURACY_PNG_PATH,
     REV4_EPOCHS,
+    REV4_ERROR_DISTRIBUTION_PNG_PATH,
+    REV4_FORECAST_OVERVIEW_PNG_PATH,
     REV4_HIDDEN_SIZE,
     REV4_LEARNING_RATE,
+    REV4_MARKET_CONTEXT_PANIC_MODE_PNG_PATH,
     REV4_METADATA_PATH,
+    REV4_METRICS_COMPARISON_PNG_PATH,
     REV4_MODEL_PATH,
     REV4_PRIMARY_DATASET_NAME,
     REV4_PRIMARY_DATASET_PATH,
+    REV4_PREDICTIONS_CSV_PATH,
     REV4_RANDOM_SEED,
     REV4_REPORT_JSON_PATH,
     REV4_REPORT_MD_PATH,
@@ -30,7 +35,6 @@ from nse_engine.config import (
     REV4_SCALER_PATH,
     REV4_SEQUENCE_LENGTH,
     REV4_TRAIN_RATIO,
-    REV4_PREDICTIONS_CSV_PATH,
 )
 from nse_engine.evaluation import (
     build_naive_baselines,
@@ -43,7 +47,11 @@ from nse_engine.lstm import Rev4LSTMModel, predict_scaled, set_reproducible_seed
 from nse_engine.reporting import (
     build_rev4_baseline_report,
     build_rev4_report,
-    plot_rev4_predictions,
+    plot_rev4_direction_accuracy,
+    plot_rev4_error_distribution,
+    plot_rev4_forecast_overview,
+    plot_rev4_market_context,
+    plot_rev4_metrics_comparison,
     plot_rev4_residuals,
     write_rev4_baseline_report,
     write_rev4_report,
@@ -62,8 +70,12 @@ def train_rev4_pipeline(
     baseline_report_json_path: Path = REV4_BASELINE_REPORT_JSON_PATH,
     baseline_report_md_path: Path = REV4_BASELINE_REPORT_MD_PATH,
     predictions_csv_path: Path = REV4_PREDICTIONS_CSV_PATH,
-    prediction_plot_path: Path = REV4_ACTUAL_VS_PREDICTIONS_PNG_PATH,
+    forecast_overview_plot_path: Path = REV4_FORECAST_OVERVIEW_PNG_PATH,
     residual_plot_path: Path = REV4_RESIDUALS_PNG_PATH,
+    metrics_comparison_plot_path: Path = REV4_METRICS_COMPARISON_PNG_PATH,
+    error_distribution_plot_path: Path = REV4_ERROR_DISTRIBUTION_PNG_PATH,
+    direction_accuracy_plot_path: Path = REV4_DIRECTION_ACCURACY_PNG_PATH,
+    market_context_plot_path: Path = REV4_MARKET_CONTEXT_PANIC_MODE_PNG_PATH,
 ) -> dict[str, Any]:
     """Entraine le modele Rev4 principal et sauvegarde artefacts + rapport."""
 
@@ -145,8 +157,12 @@ def train_rev4_pipeline(
             "baseline_report_json_path": _relative_path(baseline_report_json_path),
             "baseline_report_md_path": _relative_path(baseline_report_md_path),
             "predictions_csv_path": _relative_path(predictions_csv_path),
-            "prediction_plot_path": _relative_path(prediction_plot_path),
+            "forecast_overview_plot_path": _relative_path(forecast_overview_plot_path),
             "residual_plot_path": _relative_path(residual_plot_path),
+            "metrics_comparison_plot_path": _relative_path(metrics_comparison_plot_path),
+            "error_distribution_plot_path": _relative_path(error_distribution_plot_path),
+            "direction_accuracy_plot_path": _relative_path(direction_accuracy_plot_path),
+            "market_context_plot_path": _relative_path(market_context_plot_path),
         },
         "final_train_loss": history.losses[-1],
         "financial_disclaimer": FINANCIAL_DISCLAIMER,
@@ -174,8 +190,12 @@ def train_rev4_pipeline(
         report_md_path=baseline_report_md_path,
         predictions_csv_path=predictions_csv_path,
     )
-    plot_rev4_predictions(prediction_frame, output_path=prediction_plot_path)
+    plot_rev4_forecast_overview(prediction_frame, output_path=forecast_overview_plot_path)
     plot_rev4_residuals(prediction_frame, output_path=residual_plot_path)
+    plot_rev4_metrics_comparison(comparison, output_path=metrics_comparison_plot_path)
+    plot_rev4_error_distribution(prediction_frame, output_path=error_distribution_plot_path)
+    plot_rev4_direction_accuracy(comparison, output_path=direction_accuracy_plot_path)
+    plot_rev4_market_context(df, output_path=market_context_plot_path)
     return metadata
 
 

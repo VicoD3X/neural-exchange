@@ -46,11 +46,16 @@ Exports :
 - `reports/rev4/rev4_baseline_comparison.json` ;
 - `reports/rev4/rev4_baseline_comparison.md` ;
 - `reports/rev4/rev4_predictions.csv` ;
-- `reports/rev4/rev4_actual_vs_predictions.png` ;
-- `reports/rev4/rev4_residuals.png`.
+- `reports/rev4/rev4_forecast_overview.png` ;
+- `reports/rev4/rev4_residuals.png` ;
+- `reports/rev4/rev4_metrics_comparison.png` ;
+- `reports/rev4/rev4_error_distribution.png` ;
+- `reports/rev4/rev4_direction_accuracy.png` ;
+- `reports/rev4/rev4_market_context_panic_mode.png`.
 
 Le rapport contient les metriques retrospectives, les features, les hyperparametres,
-un apercu de predictions et une comparaison contre deux baselines simples.
+un apercu de predictions, une comparaison contre deux baselines simples et des graphiques
+scientifiques clairs pour lire le contexte, les erreurs, les residus et la direction.
 
 ## Interpretation
 

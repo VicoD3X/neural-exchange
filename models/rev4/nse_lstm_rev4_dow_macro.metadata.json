@@ -2,7 +2,7 @@
   "model_name": "nse-lstm-rev4-dow-macro",
   "dataset_name": "dow_macro_rev4_features",
   "dataset_path": "data/processed/dow_macro_rev4_features.csv",
-  "generated_at": "2026-04-26T07:18:34.804396+00:00",
+  "generated_at": "2026-04-26T07:47:49.644902+00:00",
   "feature_columns": [
     "Market_Close",
     "FEDFUNDS",
@@ -76,8 +76,12 @@
     "baseline_report_json_path": "reports/rev4/rev4_baseline_comparison.json",
     "baseline_report_md_path": "reports/rev4/rev4_baseline_comparison.md",
     "predictions_csv_path": "reports/rev4/rev4_predictions.csv",
-    "prediction_plot_path": "reports/rev4/rev4_actual_vs_predictions.png",
-    "residual_plot_path": "reports/rev4/rev4_residuals.png"
+    "forecast_overview_plot_path": "reports/rev4/rev4_forecast_overview.png",
+    "residual_plot_path": "reports/rev4/rev4_residuals.png",
+    "metrics_comparison_plot_path": "reports/rev4/rev4_metrics_comparison.png",
+    "error_distribution_plot_path": "reports/rev4/rev4_error_distribution.png",
+    "direction_accuracy_plot_path": "reports/rev4/rev4_direction_accuracy.png",
+    "market_context_plot_path": "reports/rev4/rev4_market_context_panic_mode.png"
   },
   "final_train_loss": 0.0003688486009195913,
   "financial_disclaimer": "Donnees et modeles experimentaux. Aucun resultat ne constitue un conseil financier."

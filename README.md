@@ -196,12 +196,16 @@ Les performances Rev4 sont retrospectives et exploratoires. Elles servent a vali
 | Artefact | Role |
 |---|---|
 | `models/rev4/nse_lstm_rev4_dow_macro.pt` | Poids du modele Rev4 actuel |
-| `models/rev4/nse_lstm_rev4_dow_macro.scaler.joblib` | Scaler sauvegarde pour reproduire l'inference Rev4 |
+| `models/rev4/nse_lstm_rev4_dow_macro_scaler.joblib` | Scaler sauvegarde pour reproduire l'inference Rev4 |
 | `models/rev4/nse_lstm_rev4_dow_macro.metadata.json` | Metadata du run, features, metriques et verdict critique |
 | `reports/rev4/rev4_training_report.md` | Rapport principal d'entrainement Rev4 |
 | `reports/rev4/rev4_baseline_comparison.md` | Comparaison LSTM vs baselines |
-| `reports/rev4/rev4_actual_vs_predictions.png` | Courbe reel vs LSTM vs baselines |
+| `reports/rev4/rev4_forecast_overview.png` | Courbe reel vs LSTM vs baselines |
 | `reports/rev4/rev4_residuals.png` | Residus des predictions |
+| `reports/rev4/rev4_metrics_comparison.png` | Comparaison visuelle des metriques |
+| `reports/rev4/rev4_error_distribution.png` | Distribution des erreurs absolues |
+| `reports/rev4/rev4_direction_accuracy.png` | Comparaison de la precision directionnelle |
+| `reports/rev4/rev4_market_context_panic_mode.png` | Contexte marche, volatilite et `Panic_Mode` |
 
 ## Evaluation critique
 
@@ -224,12 +228,37 @@ Lecture : la baseline `last_value` est meilleure sur l'erreur de prix, ce qui ra
 
 Verdict actuel : le LSTM Rev4 ne bat pas la meilleure baseline naive sur le MAE. Ce n'est pas traite comme un echec du projet, mais comme un resultat critique utile : le pipeline est capable de montrer quand un modele complexe n'apporte pas assez face a une reference simple.
 
-Les graphiques disponibles dans `reports/rev4/` montrent :
-
-- reel vs LSTM vs baselines ;
-- residus du LSTM et des baselines.
-
 Cette conclusion est volontairement mise en avant : le projet gagne en credibilite parce qu'il documente une absence de superiorite claire du LSTM sur une baseline simple, au lieu de presenter une courbe isolee comme une preuve.
+
+## Resultats visuels Rev4
+
+Les graphiques ci-dessous sont generes par `python scripts/train_rev4_model.py`. Ils servent a rendre l'evaluation lisible, pas a suggerer une capacite de trading ou de prediction de crise.
+
+### Contexte marche et Panic_Mode
+
+![Contexte marche Rev4](reports/rev4/rev4_market_context_panic_mode.png)
+
+### Reel vs predictions
+
+![Reel vs predictions Rev4](reports/rev4/rev4_forecast_overview.png)
+
+### Comparaison des metriques
+
+![Metriques Rev4](reports/rev4/rev4_metrics_comparison.png)
+
+### Residus
+
+![Residus Rev4](reports/rev4/rev4_residuals.png)
+
+### Distribution des erreurs
+
+![Distribution des erreurs Rev4](reports/rev4/rev4_error_distribution.png)
+
+### Direction accuracy
+
+![Direction accuracy Rev4](reports/rev4/rev4_direction_accuracy.png)
+
+La lecture visuelle ne remplace pas les metriques. Le verdict actuel reste que la baseline `last_value` bat le LSTM Rev4 sur le MAE, meme si le LSTM conserve un interet experimental pour analyser la preparation des sequences et le signal directionnel.
 
 ## Tests
 
