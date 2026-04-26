@@ -6,6 +6,18 @@
     "test_rows": 399,
     "best_by_mae": "last_value"
   },
+  "critical_evaluation": {
+    "status": "lstm_does_not_beat_best_naive_baseline",
+    "message": "Le LSTM Rev4 ne bat pas la meilleure baseline naive sur le MAE. Ce resultat n'est pas un echec : il montre que le modele est evalue contre une reference simple.",
+    "primary_metric": "mae",
+    "best_overall_model": "last_value",
+    "best_baseline_model": "last_value",
+    "lstm_rank_by_mae": 2,
+    "lstm_beats_best_baseline": false,
+    "mae_delta_vs_best_baseline": 137.52000427246094,
+    "mae_ratio_vs_best_baseline": 2.9009681690255515,
+    "direction_delta_vs_best_baseline": 3.266331658291463
+  },
   "comparison": [
     {
       "model": "last_value",

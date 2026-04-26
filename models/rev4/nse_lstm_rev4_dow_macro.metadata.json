@@ -2,7 +2,7 @@
   "model_name": "nse-lstm-rev4-dow-macro",
   "dataset_name": "dow_macro_rev4_features",
   "dataset_path": "data/processed/dow_macro_rev4_features.csv",
-  "generated_at": "2026-04-26T07:09:57.718497+00:00",
+  "generated_at": "2026-04-26T07:18:34.804396+00:00",
   "feature_columns": [
     "Market_Close",
     "FEDFUNDS",
@@ -57,6 +57,18 @@
       "directional_accuracy_percent": 55.778894472361806
     }
   ],
+  "critical_evaluation": {
+    "status": "lstm_does_not_beat_best_naive_baseline",
+    "message": "Le LSTM Rev4 ne bat pas la meilleure baseline naive sur le MAE. Ce resultat n'est pas un echec : il montre que le modele est evalue contre une reference simple.",
+    "primary_metric": "mae",
+    "best_overall_model": "last_value",
+    "best_baseline_model": "last_value",
+    "lstm_rank_by_mae": 2,
+    "lstm_beats_best_baseline": false,
+    "mae_delta_vs_best_baseline": 137.52000427246094,
+    "mae_ratio_vs_best_baseline": 2.9009681690255515,
+    "direction_delta_vs_best_baseline": 3.266331658291463
+  },
   "artifacts": {
     "model_path": "models/rev4/nse_lstm_rev4_dow_macro.pt",
     "scaler_path": "models/rev4/nse_lstm_rev4_dow_macro_scaler.joblib",

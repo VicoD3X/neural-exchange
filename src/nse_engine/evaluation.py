@@ -75,3 +75,63 @@ def compare_prediction_sets(
         metrics = compute_regression_metrics(actuals, values)
         rows.append({"model": name, **metrics})
     return sorted(rows, key=lambda row: row["mae"])
+
+
+def summarize_lstm_vs_baselines(
+    comparison: list[dict[str, Any]],
+    *,
+    lstm_model_name: str = "lstm_rev4",
+) -> dict[str, Any]:
+    """Produit un verdict lisible entre LSTM et meilleures baselines naives."""
+
+    if not comparison:
+        return {
+            "status": "not_evaluated",
+            "message": "Aucune comparaison disponible.",
+        }
+
+    by_model = {row["model"]: row for row in comparison}
+    lstm_row = by_model.get(lstm_model_name)
+    baseline_rows = [row for row in comparison if row["model"] != lstm_model_name]
+    if lstm_row is None or not baseline_rows:
+        return {
+            "status": "not_evaluated",
+            "message": "Comparaison LSTM/baselines incomplete.",
+        }
+
+    best_baseline = min(baseline_rows, key=lambda row: row["mae"])
+    best_overall = min(comparison, key=lambda row: row["mae"])
+    lstm_rank = sorted(comparison, key=lambda row: row["mae"]).index(lstm_row) + 1
+    mae_delta = float(lstm_row["mae"] - best_baseline["mae"])
+    mae_ratio = float(lstm_row["mae"] / best_baseline["mae"]) if best_baseline["mae"] else float("inf")
+    direction_delta = float(
+        lstm_row["directional_accuracy_percent"]
+        - best_baseline["directional_accuracy_percent"]
+    )
+    beats_best_baseline = mae_delta < 0
+
+    if beats_best_baseline:
+        status = "lstm_beats_best_naive_baseline"
+        message = (
+            "Le LSTM Rev4 bat la meilleure baseline naive sur le MAE. "
+            "Ce signal reste retrospectif et doit etre confirme par une validation plus robuste."
+        )
+    else:
+        status = "lstm_does_not_beat_best_naive_baseline"
+        message = (
+            "Le LSTM Rev4 ne bat pas la meilleure baseline naive sur le MAE. "
+            "Ce resultat n'est pas un echec : il montre que le modele est evalue contre une reference simple."
+        )
+
+    return {
+        "status": status,
+        "message": message,
+        "primary_metric": "mae",
+        "best_overall_model": best_overall["model"],
+        "best_baseline_model": best_baseline["model"],
+        "lstm_rank_by_mae": lstm_rank,
+        "lstm_beats_best_baseline": beats_best_baseline,
+        "mae_delta_vs_best_baseline": mae_delta,
+        "mae_ratio_vs_best_baseline": mae_ratio,
+        "direction_delta_vs_best_baseline": direction_delta,
+    }

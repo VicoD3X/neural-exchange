@@ -8,6 +8,16 @@
 - Test rows : 399
 - Meilleur MAE : `last_value`
 
+## Verdict
+
+- Statut : `lstm_does_not_beat_best_naive_baseline`
+- Lecture : Le LSTM Rev4 ne bat pas la meilleure baseline naive sur le MAE. Ce resultat n'est pas un echec : il montre que le modele est evalue contre une reference simple.
+- Meilleure baseline : `last_value`
+- Rang du LSTM par MAE : 2
+- Delta MAE vs meilleure baseline : 137.52
+- Ratio MAE vs meilleure baseline : 2.90
+- Delta direction vs meilleure baseline : +3.27 points
+
 ## Metriques
 
 | Modele | MAE | RMSE | MAPE % | Direction % |

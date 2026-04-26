@@ -52,6 +52,7 @@ def build_rev4_report(
         },
         "metrics": metadata["metrics"],
         "baseline_comparison": metadata.get("baseline_comparison", []),
+        "critical_evaluation": metadata.get("critical_evaluation", {}),
         "features": metadata["feature_columns"],
         "training": {
             "sequence_length": metadata["sequence_length"],
@@ -116,9 +117,12 @@ def render_rev4_markdown(report: dict[str, Any]) -> str:
 
     baseline_comparison = report.get("baseline_comparison", [])
     if baseline_comparison:
+        critical_evaluation = report.get("critical_evaluation", {})
         lines.extend(
             [
                 "## Comparaison critique",
+                "",
+                f"- Verdict : {critical_evaluation.get('message', 'Evaluation critique disponible dans le rapport baseline.')}",
                 "",
                 "| Modele | MAE | RMSE | MAPE % | Direction % |",
                 "|---|---:|---:|---:|---:|",
@@ -184,6 +188,7 @@ def build_rev4_baseline_report(
     *,
     metadata: dict[str, Any],
     comparison: list[dict[str, Any]],
+    critical_evaluation: dict[str, Any],
     prediction_frame: pd.DataFrame,
 ) -> dict[str, Any]:
     """Construit le rapport de comparaison critique Rev4."""
@@ -196,6 +201,7 @@ def build_rev4_baseline_report(
             "test_rows": metadata["test_rows"],
             "best_by_mae": comparison[0]["model"] if comparison else None,
         },
+        "critical_evaluation": critical_evaluation,
         "comparison": comparison,
         "prediction_preview": prediction_frame.head(10).to_dict(orient="records"),
         "prediction_tail": prediction_frame.tail(10).to_dict(orient="records"),
@@ -230,6 +236,7 @@ def render_rev4_baseline_markdown(report: dict[str, Any]) -> str:
     """Rend le rapport de comparaison baseline en Markdown."""
 
     summary = report["summary"]
+    critical_evaluation = report.get("critical_evaluation", {})
     lines = [
         "# Comparaison critique Rev4 - LSTM vs baselines",
         "",
@@ -240,6 +247,16 @@ def render_rev4_baseline_markdown(report: dict[str, Any]) -> str:
         f"- Cible : `{summary['target_column']}`",
         f"- Test rows : {summary['test_rows']}",
         f"- Meilleur MAE : `{summary['best_by_mae']}`",
+        "",
+        "## Verdict",
+        "",
+        f"- Statut : `{critical_evaluation.get('status', 'not_evaluated')}`",
+        f"- Lecture : {critical_evaluation.get('message', 'Evaluation critique non disponible.')}",
+        f"- Meilleure baseline : `{critical_evaluation.get('best_baseline_model', 'n/a')}`",
+        f"- Rang du LSTM par MAE : {critical_evaluation.get('lstm_rank_by_mae', 'n/a')}",
+        f"- Delta MAE vs meilleure baseline : {critical_evaluation.get('mae_delta_vs_best_baseline', 0):.2f}",
+        f"- Ratio MAE vs meilleure baseline : {critical_evaluation.get('mae_ratio_vs_best_baseline', 0):.2f}",
+        f"- Delta direction vs meilleure baseline : {critical_evaluation.get('direction_delta_vs_best_baseline', 0):+.2f} points",
         "",
         "## Metriques",
         "",

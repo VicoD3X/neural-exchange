@@ -17,6 +17,8 @@
 
 ## Comparaison critique
 
+- Verdict : Le LSTM Rev4 ne bat pas la meilleure baseline naive sur le MAE. Ce resultat n'est pas un echec : il montre que le modele est evalue contre une reference simple.
+
 | Modele | MAE | RMSE | MAPE % | Direction % |
 |---|---:|---:|---:|---:|
 | last_value | 72.34 | 101.00 | 0.72 | 50.25 |

@@ -164,6 +164,8 @@ Resultat actuel :
 
 Lecture : la baseline `last_value` est meilleure sur l'erreur de prix, ce qui rappelle qu'un LSTM ne doit jamais etre juge sans baseline naive. Le LSTM Rev4 reste utile comme base experimentale reproductible, mais il ne constitue pas encore un modele de forecasting robuste.
 
+Verdict actuel : le LSTM Rev4 ne bat pas la meilleure baseline naive sur le MAE. Ce n'est pas traite comme un echec du projet, mais comme un resultat critique utile : le pipeline est capable de montrer quand un modele complexe n'apporte pas assez face a une reference simple.
+
 Les graphiques disponibles dans `reports/rev4/` montrent :
 
 - reel vs LSTM vs baselines ;

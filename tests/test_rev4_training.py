@@ -9,6 +9,7 @@ from nse_engine.evaluation import (
     build_prediction_frame,
     compare_prediction_sets,
     compute_regression_metrics,
+    summarize_lstm_vs_baselines,
 )
 from nse_engine.features import add_rev4_market_features
 from nse_engine.lstm import Rev4LSTMModel, predict_scaled
@@ -124,3 +125,29 @@ def test_naive_baselines_are_causal_and_exportable() -> None:
         prediction_frame.columns
     )
     assert comparison[0]["model"] == "lstm_rev4"
+
+
+def test_critical_evaluation_documents_when_lstm_does_not_beat_baseline() -> None:
+    comparison = [
+        {
+            "model": "last_value",
+            "mae": 10.0,
+            "rmse": 12.0,
+            "mape_percent": 1.0,
+            "directional_accuracy_percent": 50.0,
+        },
+        {
+            "model": "lstm_rev4",
+            "mae": 15.0,
+            "rmse": 18.0,
+            "mape_percent": 1.5,
+            "directional_accuracy_percent": 55.0,
+        },
+    ]
+
+    summary = summarize_lstm_vs_baselines(comparison)
+
+    assert summary["status"] == "lstm_does_not_beat_best_naive_baseline"
+    assert summary["lstm_beats_best_baseline"] is False
+    assert summary["best_baseline_model"] == "last_value"
+    assert summary["mae_delta_vs_best_baseline"] == 5.0

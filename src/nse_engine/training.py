@@ -37,6 +37,7 @@ from nse_engine.evaluation import (
     build_prediction_frame,
     compare_prediction_sets,
     compute_regression_metrics,
+    summarize_lstm_vs_baselines,
 )
 from nse_engine.lstm import Rev4LSTMModel, predict_scaled, set_reproducible_seed, train_lstm_model
 from nse_engine.reporting import (
@@ -104,6 +105,7 @@ def train_rev4_pipeline(
     )
     prediction_sets = {"lstm_rev4": predictions, **baselines}
     comparison = compare_prediction_sets(actuals=actuals, predictions=prediction_sets)
+    critical_evaluation = summarize_lstm_vs_baselines(comparison)
     prediction_frame = build_prediction_frame(
         dates=sequences.test_dates,
         actuals=actuals,
@@ -135,6 +137,7 @@ def train_rev4_pipeline(
         "random_seed": REV4_RANDOM_SEED,
         "metrics": metrics,
         "baseline_comparison": comparison,
+        "critical_evaluation": critical_evaluation,
         "artifacts": {
             "model_path": _relative_path(model_path),
             "scaler_path": _relative_path(scaler_path),
@@ -161,6 +164,7 @@ def train_rev4_pipeline(
     baseline_report = build_rev4_baseline_report(
         metadata=metadata,
         comparison=comparison,
+        critical_evaluation=critical_evaluation,
         prediction_frame=prediction_frame,
     )
     write_rev4_baseline_report(
