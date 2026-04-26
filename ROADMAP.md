@@ -35,13 +35,13 @@ Objectif : recentrer une partie du projet sur la detection de regime plutot que 
 
 ## Priorite 4 - Reporting et visualisation locale
 
-Objectif : rendre les resultats plus lisibles sans ajouter une architecture lourde.
+Objectif : prolonger les rapports visuels deja presents sans ajouter une architecture lourde.
 
-- Ajouter un rapport Markdown enrichi pour Rev4.
-- Ajouter un export JSON unifie pour les resultats modele.
-- Ajouter quelques graphiques statiques dans `reports/`.
-- Eventuellement ajouter une interface Streamlit locale minimale.
-- Ne pas relancer le dashboard React tant que l'inference n'est pas stabilisee.
+- Maintenir les graphiques statiques Rev4 generes dans `reports/rev4/`.
+- Ajouter un export JSON plus unifie si un dashboard devient prioritaire.
+- Evaluer plus tard une interface Streamlit locale centree analyse.
+- Evaluer separement un dashboard statique GitHub Pages.
+- Ne pas lancer de dashboard tant que l'evaluation scientifique n'est pas consolidee.
 
 ## Priorite 5 - Nettoyage legacy progressif
 
@@ -55,11 +55,10 @@ Objectif : conserver l'histoire du projet sans laisser le legacy brouiller le fl
 
 ## Priorite 6 - Qualite projet
 
-Objectif : rendre le depot plus robuste pour une lecture externe.
+Objectif : maintenir le niveau qualite du depot pour une lecture externe.
 
-- Ajouter une CI GitHub Actions minimale.
-- Lancer `pytest`, `ruff` et `pip check` en CI.
-- Ajouter un badge CI au README.
+- Garder la CI GitHub Actions verte.
+- Maintenir `pytest`, `ruff` et `pip check`.
 - Ajouter un scan secrets manuel avant chaque push important.
 - Ajouter un guide de contribution minimal si le projet grossit.
 

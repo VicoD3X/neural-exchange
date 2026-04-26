@@ -7,6 +7,8 @@ Neural Stock Exchange est un projet experimental.
 - Pas de validation walk-forward avancee.
 - Pas de comparaison robuste contre toutes les baselines pertinentes.
 - La baseline `last_value` bat actuellement le LSTM Rev4 sur l'erreur de prix.
+- Le signal directionnel du LSTM reste experimental et ne suffit pas a conclure.
+- `Panic_Mode` est un indicateur de stress base volatilite, pas un detecteur fiable de crise.
 - Pas de garantie de stabilite hors periode etudiee.
 - Rev2 et Rev2.5 ne sont pas completement reproductibles.
 - Rev3 n'est pas un pipeline actif.
@@ -31,3 +33,15 @@ Ce projet ne fournit pas :
 - outil de gestion de risque en production.
 
 Toute lecture des resultats doit rester retrospective, pedagogique et experimentale.
+
+## Positionnement correct
+
+Le projet doit etre lu comme un laboratoire d'ingenierie data et de series temporelles.
+
+Sa qualite vient de :
+
+- la separation du legacy et du flux Rev4 ;
+- la reproductibilite modele + scaler + metadata ;
+- les baselines causales ;
+- les tests time series ;
+- l'acceptation explicite des limites du LSTM.

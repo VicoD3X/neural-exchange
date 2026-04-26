@@ -4,10 +4,11 @@ import ast
 from pathlib import Path
 
 
-OFFLINE_SCRIPT_NAMES = {
+SCRIPTS_WITHOUT_DIRECT_NETWORK_CLIENTS = {
     "check_legacy_models.py",
     "convert_legacy_reports.py",
     "train_rev4_model.py",
+    "run_rev4_pipeline.py",
 }
 
 NETWORK_MODULES = {"yfinance", "fredapi"}
@@ -18,7 +19,7 @@ def test_critical_offline_scripts_do_not_import_network_clients() -> None:
     scripts_dir = project_root / "scripts"
 
     offenders: list[str] = []
-    for script_name in OFFLINE_SCRIPT_NAMES:
+    for script_name in SCRIPTS_WITHOUT_DIRECT_NETWORK_CLIENTS:
         tree = ast.parse((scripts_dir / script_name).read_text(encoding="utf-8"))
         for node in ast.walk(tree):
             if isinstance(node, ast.Import):
@@ -46,5 +47,17 @@ def test_dataset_generation_scripts_are_the_only_scripts_allowed_to_use_network_
 
     checked_scripts = {path.name for path in scripts_dir.glob("*.py")}
 
-    assert OFFLINE_SCRIPT_NAMES.issubset(checked_scripts)
+    assert SCRIPTS_WITHOUT_DIRECT_NETWORK_CLIENTS.issubset(checked_scripts)
     assert generation_scripts.issubset(checked_scripts)
+
+
+def test_rev4_pipeline_script_orchestrates_dataset_then_training() -> None:
+    project_root = Path(__file__).resolve().parents[1]
+    script_text = (project_root / "scripts" / "run_rev4_pipeline.py").read_text(encoding="utf-8")
+
+    dataset_index = script_text.index("build_dow_macro_rev4_dataset.py")
+    training_index = script_text.index("train_rev4_model.py")
+
+    assert dataset_index < training_index
+    assert "subprocess.run" in script_text
+    assert "reports/rev4/" in script_text

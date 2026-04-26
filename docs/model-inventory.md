@@ -41,4 +41,6 @@ Le rapport Rev4 compare aussi le LSTM a deux baselines simples :
 La comparaison actuelle montre que `last_value` est plus solide sur l'erreur de prix.
 Ce resultat est conserve volontairement, car il rend l'evaluation plus credible.
 
+La lecture complete est documentee dans `docs/critical-evaluation.md`.
+
 Elles ne doivent pas etre interpretees comme une promesse de prediction future.

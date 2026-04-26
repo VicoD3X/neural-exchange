@@ -7,6 +7,21 @@
 ![Data](https://img.shields.io/badge/Data-FRED_+_yfinance-0f766e)
 ![No Advice](https://img.shields.io/badge/No_financial_advice-required-red)
 
+## En 20 secondes
+
+Neural Stock Exchange est un laboratoire experimental de series temporelles financieres.
+
+Il combine :
+
+- des donnees de marche et macroeconomiques ;
+- un indicateur experimental de stress de marche, `Panic_Mode` ;
+- des LSTM PyTorch ;
+- des modeles legacy recuperes ;
+- un flux Rev4 reproductible avec modele, scaler, metadata, rapports et graphiques ;
+- une comparaison critique contre des baselines causales.
+
+Verdict actuel : le LSTM Rev4 ne bat pas la baseline `last_value` sur le MAE. Ce resultat est volontairement mis en avant, car il montre que le projet ne vend pas une courbe, mais une demarche d'evaluation.
+
 ## Presentation
 
 Neural Stock Exchange est un laboratoire experimental autour des series temporelles financieres.
@@ -173,6 +188,15 @@ Convertir les rapports historiques :
 python scripts/convert_legacy_reports.py
 ```
 
+Pipeline Rev4 complet :
+
+```bash
+python scripts/run_rev4_pipeline.py
+```
+
+Cette commande regenere le dataset Dow/Macro Rev4, entraine le modele, sauvegarde le scaler, met a jour la metadata, les rapports et les graphiques.
+Elle necessite un acces reseau et peut utiliser `FRED_API_KEY` si la recuperation FRED par API est active.
+
 Lancer les tests :
 
 ```bash
@@ -214,6 +238,8 @@ Le modele Rev4 est compare a deux baselines simples :
 - derniere valeur connue ;
 - moyenne mobile 21 jours.
 
+Ces baselines sont causales : elles utilisent uniquement les informations disponibles avant la date predite. Cette contrainte evite une fuite temporelle et rend la comparaison lisible.
+
 Cette comparaison est volontairement centrale : un LSTM n'a d'interet que s'il apporte quelque chose face a des references simples.
 
 Resultat actuel :
@@ -228,7 +254,26 @@ Lecture : la baseline `last_value` est meilleure sur l'erreur de prix, ce qui ra
 
 Verdict actuel : le LSTM Rev4 ne bat pas la meilleure baseline naive sur le MAE. Ce n'est pas traite comme un echec du projet, mais comme un resultat critique utile : le pipeline est capable de montrer quand un modele complexe n'apporte pas assez face a une reference simple.
 
+Pourquoi ce resultat est important :
+
+- `last_value` est une baseline tres forte sur une serie de prix, car le niveau de demain est souvent proche du niveau d'aujourd'hui ;
+- le LSTM peut lisser ou reagir avec retard sur les retournements rapides ;
+- la direction accuracy raconte une information differente du MAE, mais ne suffit pas a prouver une robustesse financiere ;
+- le projet gagne en credibilite parce qu'il documente ce que le modele ne capte pas encore.
+
 Cette conclusion est volontairement mise en avant : le projet gagne en credibilite parce qu'il documente une absence de superiorite claire du LSTM sur une baseline simple, au lieu de presenter une courbe isolee comme une preuve.
+
+Voir aussi : `docs/critical-evaluation.md`.
+
+## Panic_Mode
+
+`Panic_Mode` est un indicateur experimental de stress de marche base sur la volatilite.
+
+Dans Rev4, le signal vaut 1 lorsque la volatilite 1 mois atteint les 5% les plus eleves de la periode disponible. Il sert a visualiser des regimes de stress, pas a predire une crise.
+
+Ce signal est une des pieces fortes du projet : il reconnecte le prototype a son intention initiale, tout en restant documente avec prudence.
+
+Voir aussi : `docs/panic-mode.md`.
 
 ## Resultats visuels Rev4
 
@@ -273,6 +318,7 @@ Ils couvrent notamment :
 - absence de fuite temporelle simple ;
 - shapes LSTM ;
 - metadata ;
+- generation de graphiques Rev4 ;
 - conversion de rapports legacy ;
 - absence d'appel reseau dans les scripts critiques offline.
 
@@ -282,6 +328,7 @@ Ils couvrent notamment :
 - Pas de validation walk-forward avancee.
 - Pas de conseil financier.
 - Pas de dashboard actif.
+- Pas de validation separee solide sur les regimes de stress.
 - Backend Flask historique archive, non maintenu.
 - Rev2 et Rev2.5 sont documentes mais non reproductibles completement.
 - Rev3 reste une archive avancee, non utilisee comme source active.
@@ -291,6 +338,8 @@ Ils couvrent notamment :
 Voir aussi :
 
 - `docs/project-summary.md`
+- `docs/critical-evaluation.md`
+- `docs/panic-mode.md`
 - `docs/data-inventory.md`
 - `docs/model-inventory.md`
 - `docs/reporting.md`

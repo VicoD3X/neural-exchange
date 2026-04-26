@@ -39,6 +39,12 @@ Le rapport Rev4 est genere pendant l'entrainement :
 python scripts/train_rev4_model.py
 ```
 
+Le flux complet peut aussi etre relance avec :
+
+```bash
+python scripts/run_rev4_pipeline.py
+```
+
 Exports :
 
 - `reports/rev4/rev4_training_report.json` ;

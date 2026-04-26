@@ -26,5 +26,6 @@ Cette note liste les zones connues qui ne doivent pas etre confondues avec le fl
 - Ajouter une validation walk-forward.
 - Ajouter d'autres baselines au-dela de `last_value` et moyenne mobile.
 - Evaluer specifiquement les periodes de stress.
-- Ajouter un rapport visuel local.
+- Ameliorer l'analyse de `Panic_Mode` avec faux positifs et faux negatifs.
+- Ajouter un dashboard uniquement apres consolidation de l'evaluation.
 - Repenser un dashboard uniquement quand le flux inference est stabilise.

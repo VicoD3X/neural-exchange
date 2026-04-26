@@ -22,6 +22,16 @@ Les scripts generent des CSV dans `data/processed/` :
 
 Ces fichiers sont ignores par Git car ils peuvent etre reconstruits.
 
+Commande Rev4 complete :
+
+```bash
+python scripts/run_rev4_pipeline.py
+```
+
+Cette commande regenere `dow_macro_rev4_features.csv`, puis relance l'entrainement Rev4,
+les rapports et les graphiques.
+Elle necessite un acces reseau et peut utiliser `FRED_API_KEY` si la recuperation FRED par API est active.
+
 ## Schema Rev4 Dow/Macro
 
 Colonnes principales :
