@@ -4,10 +4,15 @@ import numpy as np
 import pandas as pd
 
 from nse_engine.config import DOW_MACRO_REV4_FEATURE_COLUMNS
+from nse_engine.evaluation import (
+    build_naive_baselines,
+    build_prediction_frame,
+    compare_prediction_sets,
+    compute_regression_metrics,
+)
 from nse_engine.features import add_rev4_market_features
 from nse_engine.lstm import Rev4LSTMModel, predict_scaled
 from nse_engine.sequences import build_rev4_sequences, inverse_transform_target
-from nse_engine.training import compute_regression_metrics
 
 
 def _synthetic_rev4_frame(rows: int = 80) -> pd.DataFrame:
@@ -94,3 +99,28 @@ def test_inverse_transform_target_and_metrics_are_finite() -> None:
     assert np.isfinite(restored).all()
     assert metrics["mae"] == 0.0
     assert metrics["rmse"] == 0.0
+
+
+def test_naive_baselines_are_causal_and_exportable() -> None:
+    frame = _synthetic_rev4_frame()
+    dataset = build_rev4_sequences(frame, sequence_length=10, train_ratio=0.75)
+    actuals = frame["Market_Close"].iloc[dataset.train_rows :].to_numpy(dtype=np.float32)
+    baselines = build_naive_baselines(
+        frame,
+        target_column="Market_Close",
+        train_rows=dataset.train_rows,
+        moving_average_window=5,
+    )
+    prediction_frame = build_prediction_frame(
+        dates=dataset.test_dates,
+        actuals=actuals,
+        predictions={"lstm_rev4": actuals, **baselines},
+    )
+    comparison = compare_prediction_sets(actuals=actuals, predictions={"lstm_rev4": actuals, **baselines})
+
+    assert np.isclose(baselines["last_value"][0], frame.loc[dataset.train_rows - 1, "Market_Close"])
+    assert np.isfinite(baselines["moving_average_5"]).all()
+    assert {"date", "actual", "lstm_rev4_prediction", "last_value_prediction"}.issubset(
+        prediction_frame.columns
+    )
+    assert comparison[0]["model"] == "lstm_rev4"

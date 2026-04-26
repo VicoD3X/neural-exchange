@@ -6,6 +6,7 @@ Neural Stock Exchange est un projet experimental.
 
 - Pas de validation walk-forward avancee.
 - Pas de comparaison robuste contre toutes les baselines pertinentes.
+- La baseline `last_value` bat actuellement le LSTM Rev4 sur l'erreur de prix.
 - Pas de garantie de stabilite hors periode etudiee.
 - Rev2 et Rev2.5 ne sont pas completement reproductibles.
 - Rev3 n'est pas un pipeline actif.

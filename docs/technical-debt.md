@@ -24,7 +24,7 @@ Cette note liste les zones connues qui ne doivent pas etre confondues avec le fl
 ## Prochaines ameliorations possibles
 
 - Ajouter une validation walk-forward.
-- Comparer Rev4 a une baseline naive.
+- Ajouter d'autres baselines au-dela de `last_value` et moyenne mobile.
 - Evaluer specifiquement les periodes de stress.
 - Ajouter un rapport visuel local.
 - Repenser un dashboard uniquement quand le flux inference est stabilise.

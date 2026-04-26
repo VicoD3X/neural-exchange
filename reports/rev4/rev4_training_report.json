@@ -13,6 +13,29 @@
     "mape_percent": 2.0411033630371094,
     "directional_accuracy_percent": 53.517587939698494
   },
+  "baseline_comparison": [
+    {
+      "model": "last_value",
+      "mae": 72.34208679199219,
+      "rmse": 101.00430297851562,
+      "mape_percent": 0.7151426076889038,
+      "directional_accuracy_percent": 50.25125628140703
+    },
+    {
+      "model": "lstm_rev4",
+      "mae": 209.86209106445312,
+      "rmse": 238.40696716308594,
+      "mape_percent": 2.0411033630371094,
+      "directional_accuracy_percent": 53.517587939698494
+    },
+    {
+      "model": "moving_average_21",
+      "mae": 225.6709747314453,
+      "rmse": 265.5013122558594,
+      "mape_percent": 2.230678081512451,
+      "directional_accuracy_percent": 55.778894472361806
+    }
+  ],
   "features": [
     "Market_Close",
     "FEDFUNDS",

@@ -15,6 +15,16 @@
 - MAPE : 2.04%
 - Directional accuracy : 53.52%
 
+## Comparaison critique
+
+| Modele | MAE | RMSE | MAPE % | Direction % |
+|---|---:|---:|---:|---:|
+| last_value | 72.34 | 101.00 | 0.72 | 50.25 |
+| lstm_rev4 | 209.86 | 238.41 | 2.04 | 53.52 |
+| moving_average_21 | 225.67 | 265.50 | 2.23 | 55.78 |
+
+Cette section compare le LSTM Rev4 a des baselines causales simples. Elle sert a verifier si le modele apporte un signal utile par rapport a des references naives.
+
 ## Entrainement
 
 - Sequence length : 21

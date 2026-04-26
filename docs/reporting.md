@@ -43,8 +43,14 @@ Exports :
 
 - `reports/rev4/rev4_training_report.json` ;
 - `reports/rev4/rev4_training_report.md`.
+- `reports/rev4/rev4_baseline_comparison.json` ;
+- `reports/rev4/rev4_baseline_comparison.md` ;
+- `reports/rev4/rev4_predictions.csv` ;
+- `reports/rev4/rev4_actual_vs_predictions.png` ;
+- `reports/rev4/rev4_residuals.png`.
 
-Le rapport contient les metriques retrospectives, les features, les hyperparametres et un apercu de predictions.
+Le rapport contient les metriques retrospectives, les features, les hyperparametres,
+un apercu de predictions et une comparaison contre deux baselines simples.
 
 ## Interpretation
 

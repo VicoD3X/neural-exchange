@@ -33,4 +33,12 @@ Cette structure rend le flux plus propre que les modeles legacy.
 Les metriques Rev4 sont retrospectives et exploratoires.
 Elles valident surtout que la chaine technique fonctionne.
 
+Le rapport Rev4 compare aussi le LSTM a deux baselines simples :
+
+- derniere valeur connue ;
+- moyenne mobile 21 jours.
+
+La comparaison actuelle montre que `last_value` est plus solide sur l'erreur de prix.
+Ce resultat est conserve volontairement, car il rend l'evaluation plus credible.
+
 Elles ne doivent pas etre interpretees comme une promesse de prediction future.

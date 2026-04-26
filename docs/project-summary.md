@@ -22,6 +22,7 @@ Il montre une demarche technique :
 - documentation des limites ;
 - regeneration de donnees propres ;
 - entrainement d'un baseline Rev4 ;
+- comparaison du LSTM avec des baselines simples ;
 - conversion de rapports historiques ;
 - tests offline.
 

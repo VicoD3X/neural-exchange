@@ -1,6 +1,7 @@
 # Neural Stock Exchange - Experimental LSTM Market Lab
 
 ![Python](https://img.shields.io/badge/Python-3.11-blue)
+![CI](https://github.com/VicoD3X/neural-exchange/actions/workflows/ci.yml/badge.svg)
 ![PyTorch](https://img.shields.io/badge/PyTorch-LSTM-orange)
 ![Status](https://img.shields.io/badge/Status-Experimental_MVP-lightgrey)
 ![Data](https://img.shields.io/badge/Data-FRED_+_yfinance-0f766e)
@@ -50,6 +51,7 @@ Le projet vise a montrer :
 |-- src/nse_engine/       # Moteur Python propre
 |-- tests/                # Tests offline
 |-- requirements.txt
+|-- requirements-legacy.txt
 |-- requirements-dev.txt
 `-- README.md
 ```
@@ -93,6 +95,12 @@ python -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r requirements.txt -r requirements-dev.txt
 ```
 
+Dépendances legacy optionnelles :
+
+```bash
+.\.venv\Scripts\python.exe -m pip install -r requirements-legacy.txt
+```
+
 Generer les datasets :
 
 ```bash
@@ -133,8 +141,33 @@ Le depot contient deux familles de resultats lisibles :
 
 - `reports/converted/legacy_predictions_summary.md` : conversion des rapports Rev2 et Rev2.5.
 - `reports/rev4/rev4_training_report.md` : premier rapport du baseline LSTM Rev4.
+- `reports/rev4/rev4_baseline_comparison.md` : comparaison critique LSTM vs baselines.
 
 Les performances Rev4 sont retrospectives et exploratoires. Elles servent a valider que le flux fonctionne, pas a prouver une capacite de prediction exploitable.
+
+## Evaluation critique
+
+Le modele Rev4 est compare a deux baselines simples :
+
+- derniere valeur connue ;
+- moyenne mobile 21 jours.
+
+Cette comparaison est volontairement centrale : un LSTM n'a d'interet que s'il apporte quelque chose face a des references simples.
+
+Resultat actuel :
+
+| Modele | MAE | RMSE | MAPE % | Direction % |
+|---|---:|---:|---:|---:|
+| Last value | 72.34 | 101.00 | 0.72 | 50.25 |
+| LSTM Rev4 | 209.86 | 238.41 | 2.04 | 53.52 |
+| Moving average 21 | 225.67 | 265.50 | 2.23 | 55.78 |
+
+Lecture : la baseline `last_value` est meilleure sur l'erreur de prix, ce qui rappelle qu'un LSTM ne doit jamais etre juge sans baseline naive. Le LSTM Rev4 reste utile comme base experimentale reproductible, mais il ne constitue pas encore un modele de forecasting robuste.
+
+Les graphiques disponibles dans `reports/rev4/` montrent :
+
+- reel vs LSTM vs baselines ;
+- residus du LSTM et des baselines.
 
 ## Tests
 

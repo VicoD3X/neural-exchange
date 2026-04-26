@@ -1,0 +1,242 @@
+{
+  "summary": {
+    "model_name": "nse-lstm-rev4-dow-macro",
+    "dataset_name": "dow_macro_rev4_features",
+    "target_column": "Market_Close",
+    "test_rows": 399,
+    "best_by_mae": "last_value"
+  },
+  "comparison": [
+    {
+      "model": "last_value",
+      "mae": 72.34208679199219,
+      "rmse": 101.00430297851562,
+      "mape_percent": 0.7151426076889038,
+      "directional_accuracy_percent": 50.25125628140703
+    },
+    {
+      "model": "lstm_rev4",
+      "mae": 209.86209106445312,
+      "rmse": 238.40696716308594,
+      "mape_percent": 2.0411033630371094,
+      "directional_accuracy_percent": 53.517587939698494
+    },
+    {
+      "model": "moving_average_21",
+      "mae": 225.6709747314453,
+      "rmse": 265.5013122558594,
+      "mape_percent": 2.230678081512451,
+      "directional_accuracy_percent": 55.778894472361806
+    }
+  ],
+  "prediction_preview": [
+    {
+      "date": "2009-06-03",
+      "actual": 8675.240234375,
+      "lstm_rev4_prediction": 8423.576171875,
+      "lstm_rev4_residual": -251.6640625,
+      "last_value_prediction": 8740.8701171875,
+      "last_value_residual": 65.6298828125,
+      "moving_average_21_prediction": 8438.91796875,
+      "moving_average_21_residual": -236.322265625
+    },
+    {
+      "date": "2009-06-04",
+      "actual": 8750.240234375,
+      "lstm_rev4_prediction": 8464.0673828125,
+      "lstm_rev4_residual": -286.1728515625,
+      "last_value_prediction": 8675.240234375,
+      "last_value_residual": -75.0,
+      "moving_average_21_prediction": 8450.7509765625,
+      "moving_average_21_residual": -299.4892578125
+    },
+    {
+      "date": "2009-06-05",
+      "actual": 8763.1298828125,
+      "lstm_rev4_prediction": 8540.658203125,
+      "lstm_rev4_residual": -222.4716796875,
+      "last_value_prediction": 8750.240234375,
+      "last_value_residual": -12.8896484375,
+      "moving_average_21_prediction": 8466.921875,
+      "moving_average_21_residual": -296.2080078125
+    },
+    {
+      "date": "2009-06-08",
+      "actual": 8764.490234375,
+      "lstm_rev4_prediction": 8586.466796875,
+      "lstm_rev4_residual": -178.0234375,
+      "last_value_prediction": 8763.1298828125,
+      "last_value_residual": -1.3603515625,
+      "moving_average_21_prediction": 8478.8671875,
+      "moving_average_21_residual": -285.623046875
+    },
+    {
+      "date": "2009-06-09",
+      "actual": 8763.0595703125,
+      "lstm_rev4_prediction": 8608.2412109375,
+      "lstm_rev4_residual": -154.818359375,
+      "last_value_prediction": 8764.490234375,
+      "last_value_residual": 1.4306640625,
+      "moving_average_21_prediction": 8495.7548828125,
+      "moving_average_21_residual": -267.3046875
+    },
+    {
+      "date": "2009-06-10",
+      "actual": 8739.01953125,
+      "lstm_rev4_prediction": 8628.642578125,
+      "lstm_rev4_residual": -110.376953125,
+      "last_value_prediction": 8763.0595703125,
+      "last_value_residual": 24.0400390625,
+      "moving_average_21_prediction": 8504.7265625,
+      "moving_average_21_residual": -234.29296875
+    },
+    {
+      "date": "2009-06-11",
+      "actual": 8770.919921875,
+      "lstm_rev4_prediction": 8641.6591796875,
+      "lstm_rev4_residual": -129.2607421875,
+      "last_value_prediction": 8739.01953125,
+      "last_value_residual": -31.900390625,
+      "moving_average_21_prediction": 8519.9765625,
+      "moving_average_21_residual": -250.943359375
+    },
+    {
+      "date": "2009-06-12",
+      "actual": 8799.259765625,
+      "lstm_rev4_prediction": 8683.26953125,
+      "lstm_rev4_residual": -115.990234375,
+      "last_value_prediction": 8770.919921875,
+      "last_value_residual": -28.33984375,
+      "moving_average_21_prediction": 8534.3486328125,
+      "moving_average_21_residual": -264.9111328125
+    },
+    {
+      "date": "2009-06-15",
+      "actual": 8612.1298828125,
+      "lstm_rev4_prediction": 8715.2626953125,
+      "lstm_rev4_residual": 103.1328125,
+      "last_value_prediction": 8799.259765625,
+      "last_value_residual": 187.1298828125,
+      "moving_average_21_prediction": 8558.8427734375,
+      "moving_average_21_residual": -53.287109375
+    },
+    {
+      "date": "2009-06-16",
+      "actual": 8504.669921875,
+      "lstm_rev4_prediction": 8703.763671875,
+      "lstm_rev4_residual": 199.09375,
+      "last_value_prediction": 8612.1298828125,
+      "last_value_residual": 107.4599609375,
+      "moving_average_21_prediction": 8572.2138671875,
+      "moving_average_21_residual": 67.5439453125
+    }
+  ],
+  "prediction_tail": [
+    {
+      "date": "2010-12-16",
+      "actual": 11499.25,
+      "lstm_rev4_prediction": 11314.7353515625,
+      "lstm_rev4_residual": -184.5146484375,
+      "last_value_prediction": 11457.4697265625,
+      "last_value_residual": -41.7802734375,
+      "moving_average_21_prediction": 11247.896484375,
+      "moving_average_21_residual": -251.353515625
+    },
+    {
+      "date": "2010-12-17",
+      "actual": 11491.91015625,
+      "lstm_rev4_prediction": 11354.0166015625,
+      "lstm_rev4_residual": -137.8935546875,
+      "last_value_prediction": 11499.25,
+      "last_value_residual": 7.33984375,
+      "moving_average_21_prediction": 11270.5517578125,
+      "moving_average_21_residual": -221.3583984375
+    },
+    {
+      "date": "2010-12-20",
+      "actual": 11478.1298828125,
+      "lstm_rev4_prediction": 11374.6328125,
+      "lstm_rev4_residual": -103.4970703125,
+      "last_value_prediction": 11491.91015625,
+      "last_value_residual": 13.7802734375,
+      "moving_average_21_prediction": 11293.6005859375,
+      "moving_average_21_residual": -184.529296875
+    },
+    {
+      "date": "2010-12-21",
+      "actual": 11533.16015625,
+      "lstm_rev4_prediction": 11376.16015625,
+      "lstm_rev4_residual": -157.0,
+      "last_value_prediction": 11478.1298828125,
+      "last_value_residual": -55.0302734375,
+      "moving_average_21_prediction": 11307.73828125,
+      "moving_average_21_residual": -225.421875
+    },
+    {
+      "date": "2010-12-22",
+      "actual": 11559.490234375,
+      "lstm_rev4_prediction": 11382.6240234375,
+      "lstm_rev4_residual": -176.8662109375,
+      "last_value_prediction": 11533.16015625,
+      "last_value_residual": -26.330078125,
+      "moving_average_21_prediction": 11323.4345703125,
+      "moving_average_21_residual": -236.0556640625
+    },
+    {
+      "date": "2010-12-23",
+      "actual": 11573.490234375,
+      "lstm_rev4_prediction": 11392.8798828125,
+      "lstm_rev4_residual": -180.6103515625,
+      "last_value_prediction": 11559.490234375,
+      "last_value_residual": -14.0,
+      "moving_average_21_prediction": 11341.5732421875,
+      "moving_average_21_residual": -231.9169921875
+    },
+    {
+      "date": "2010-12-27",
+      "actual": 11555.0302734375,
+      "lstm_rev4_prediction": 11400.9990234375,
+      "lstm_rev4_residual": -154.03125,
+      "last_value_prediction": 11573.490234375,
+      "last_value_residual": 18.4599609375,
+      "moving_average_21_prediction": 11367.150390625,
+      "moving_average_21_residual": -187.8798828125
+    },
+    {
+      "date": "2010-12-28",
+      "actual": 11575.5400390625,
+      "lstm_rev4_prediction": 11403.822265625,
+      "lstm_rev4_residual": -171.7177734375,
+      "last_value_prediction": 11555.0302734375,
+      "last_value_residual": -20.509765625,
+      "moving_average_21_prediction": 11384.662109375,
+      "moving_average_21_residual": -190.8779296875
+    },
+    {
+      "date": "2010-12-29",
+      "actual": 11585.3798828125,
+      "lstm_rev4_prediction": 11409.900390625,
+      "lstm_rev4_residual": -175.4794921875,
+      "last_value_prediction": 11575.5400390625,
+      "last_value_residual": -9.83984375,
+      "moving_average_21_prediction": 11407.6943359375,
+      "moving_average_21_residual": -177.685546875
+    },
+    {
+      "date": "2010-12-30",
+      "actual": 11569.7099609375,
+      "lstm_rev4_prediction": 11417.5244140625,
+      "lstm_rev4_residual": -152.185546875,
+      "last_value_prediction": 11585.3798828125,
+      "last_value_residual": 15.669921875,
+      "moving_average_21_prediction": 11433.0693359375,
+      "moving_average_21_residual": -136.640625
+    }
+  ],
+  "interpretation": [
+    "La comparaison utilise uniquement des baselines causales simples.",
+    "Une baseline naive forte peut battre un LSTM sur une serie financiere de prix.",
+    "Ces resultats sont retrospectifs et ne constituent pas une preuve de prediction future."
+  ],
+  "financial_disclaimer": "Donnees et modeles experimentaux. Aucun resultat ne constitue un conseil financier."
+}

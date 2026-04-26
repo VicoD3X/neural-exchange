@@ -8,9 +8,7 @@ Le projet reste un laboratoire experimental. Les evolutions ci-dessous doivent r
 
 Objectif : mesurer plus serieusement le premier modele Rev4.
 
-- Ajouter une baseline naive : derniere valeur connue.
-- Ajouter une baseline moyenne mobile.
-- Comparer Rev4 contre les baselines sur MAE, RMSE, MAPE et direction.
+- Etendre la comparaison actuelle avec d'autres baselines simples.
 - Ajouter une validation walk-forward simple.
 - Evaluer separement les periodes de stress, notamment 2008-2009.
 - Documenter clairement les limites des resultats.
