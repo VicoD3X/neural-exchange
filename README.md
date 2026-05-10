@@ -11,6 +11,8 @@
 
 Neural Stock Exchange est un laboratoire experimental de series temporelles financieres.
 
+Il ne s'agit pas d'un outil de trading : le projet sert a tester une demarche de forecasting, ses baselines et ses limites.
+
 Il combine :
 
 - des donnees de marche et macroeconomiques ;
